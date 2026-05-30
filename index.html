@@ -1,182 +1,845 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Calvin’s Window Washing Inc</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YOUR BUSINESS NAME</title>
+  <meta name="description" content="Clean, professional service website with about, live scheduling, automated quotes, and contact." />
+  <style>
+    :root {
+      --bg: #f4fbff;
+      --bg-2: #edf9f2;
+      --surface: rgba(255,255,255,0.82);
+      --surface-strong: #ffffff;
+      --border: rgba(18, 38, 62, 0.10);
+      --text: #10324a;
+      --muted: #5f7283;
+      --blue: #2f80ed;
+      --blue-2: #4fc3f7;
+      --green: #2fbf71;
+      --green-2: #7ee081;
+      --shadow: 0 18px 50px rgba(16, 50, 74, 0.12);
+      --shadow-strong: 0 26px 70px rgba(16, 50, 74, 0.18);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+      --hero-image: url('assets/hero.jpg');
+    }
 
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5fbff;
-    color: #1a1a1a;
-  }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 10% 0%, rgba(47,128,237,0.14), transparent 60%),
+        radial-gradient(800px 450px at 90% 10%, rgba(47,191,113,0.13), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      min-height: 100vh;
+    }
 
-  header {
-    background: linear-gradient(135deg, #4fc3f7, #81d4fa);
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-  }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
-  header h1 {
-    margin: 0;
-    font-size: 2.2rem;
-  }
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
 
-  section {
-    max-width: 900px;
-    margin: auto;
-    padding: 25px;
-  }
+    .topbar {
+      background: linear-gradient(90deg, #1f5dbd, #1fa36a);
+      color: white;
+      font-size: 0.92rem;
+    }
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      flex-wrap: wrap;
+      opacity: 0.96;
+    }
 
-  .card {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 15px 0;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(244, 251, 255, 0.80);
+      border-bottom: 1px solid rgba(16, 50, 74, 0.08);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+    }
 
-  .price {
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      min-width: 0;
+    }
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: var(--shadow);
+      flex: 0 0 auto;
+    }
+    .brand-text {
+      line-height: 1.1;
+    }
+    .brand-text strong {
+      display: block;
+      font-size: 1rem;
+    }
+    .brand-text span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-top: 3px;
+    }
 
-  input, select, button {
-    padding: 10px;
-    margin: 8px 0;
-    width: 100%;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-  }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.96rem;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--blue); }
 
-  button {
-    background: #4fc3f7;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
+    .hero {
+      padding: 22px 0 30px;
+    }
 
-  button:hover {
-    background: #039be5;
-  }
+    .hero-panel {
+      position: relative;
+      min-height: 650px;
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: var(--shadow-strong);
+      border: 1px solid rgba(255,255,255,0.50);
+      background:
+        linear-gradient(180deg, rgba(8, 22, 38, 0.15), rgba(8, 22, 38, 0.55)),
+        var(--hero-image) center/cover no-repeat;
+    }
 
-  iframe {
-    width: 100%;
-    border: none;
-    border-radius: 12px;
-  }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(6, 18, 32, 0.78) 0%, rgba(6, 18, 32, 0.52) 45%, rgba(6, 18, 32, 0.15) 100%),
+        linear-gradient(180deg, rgba(25, 116, 90, 0.20), rgba(20, 74, 160, 0.16));
+    }
 
-  footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9rem;
-    color: #555;
-  }
-</style>
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: grid;
+      align-items: center;
+      padding: 38px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      color: white;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.20);
+      backdrop-filter: blur(12px);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .hero-tag .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--green-2);
+      box-shadow: 0 0 0 6px rgba(126, 224, 129, 0.18);
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.8rem, 6vw, 5.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      text-wrap: balance;
+    }
+
+    .hero-copy p {
+      margin: 0 0 24px;
+      max-width: 60ch;
+      color: rgba(255,255,255,0.90);
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      font: inherit;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      color: white;
+      box-shadow: 0 16px 34px rgba(47,128,237,0.25);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.14);
+      color: white;
+      border-color: rgba(255,255,255,0.20);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .hero-chip {
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.96);
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .hero-side {
+      align-self: end;
+      margin-left: auto;
+      width: min(100%, 390px);
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 26px;
+      padding: 18px;
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+    }
+    .hero-side h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      color: white;
+    }
+    .hero-side p {
+      margin: 0;
+      color: rgba(255,255,255,0.86);
+      line-height: 1.65;
+      font-size: 0.98rem;
+    }
+    .mini-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .mini-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .mini-card strong { display: block; margin-bottom: 6px; color: #fff; }
+    .mini-card span { color: rgba(255,255,255,0.86); line-height: 1.5; font-size: 0.94rem; }
+
+    section {
+      padding: 26px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      letter-spacing: -0.04em;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 70ch;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .card h3 { margin: 0 0 10px; }
+    .card p, .card li, .small { color: var(--muted); line-height: 1.7; }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .pill {
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(47,128,237,0.10), rgba(47,191,113,0.12));
+      border: 1px solid rgba(16,50,74,0.08);
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .section-surface {
+      background: rgba(255,255,255,0.56);
+      border: 1px solid rgba(16,50,74,0.08);
+      border-radius: 34px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+    label {
+      display: grid;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid rgba(16,50,74,0.12);
+      border-radius: 16px;
+      padding: 14px 15px;
+      background: rgba(255,255,255,0.95);
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: rgba(47,128,237,0.70);
+      box-shadow: 0 0 0 4px rgba(47,128,237,0.10);
+    }
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .help {
+      font-size: 0.93rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .calculator {
+      display: grid;
+      gap: 14px;
+    }
+    .toggle-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .toggle-row button {
+      border: 1px solid rgba(16,50,74,0.12);
+      background: rgba(255,255,255,0.94);
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .toggle-row button.active {
+      background: linear-gradient(135deg, rgba(47,128,237,0.14), rgba(47,191,113,0.16));
+      border-color: rgba(47,128,237,0.30);
+      box-shadow: 0 10px 20px rgba(47,128,237,0.08);
+    }
+    .result-box {
+      padding: 18px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(47,128,237,0.08), rgba(47,191,113,0.10));
+      border: 1px solid rgba(47,128,237,0.18);
+    }
+    .result-box .price {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      margin: 4px 0 8px;
+    }
+    .result-box .breakdown {
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .embed-wrap {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(16,50,74,0.10);
+      background: white;
+      min-height: 680px;
+    }
+    .embed-fallback {
+      min-height: 680px;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      text-align: center;
+      color: var(--muted);
+    }
+    iframe {
+      width: 100%;
+      height: 680px;
+      border: 0;
+      display: block;
+      background: white;
+    }
+
+    .notice {
+      margin-top: 10px;
+      font-size: 0.93rem;
+      color: var(--muted);
+    }
+
+    .footer {
+      padding: 32px 0 48px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(16,50,74,0.08);
+      padding-top: 22px;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-side { margin-left: 0; width: 100%; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner { flex-direction: column; align-items: flex-start; }
+      .nav-links { gap: 14px; }
+      .hero-panel { min-height: auto; }
+      .hero-content { padding: 24px; }
+      .form-row, .toggle-row { grid-template-columns: 1fr; }
+      iframe, .embed-fallback, .embed-wrap { min-height: 560px; }
+    }
+  </style>
 </head>
-
 <body>
-
-<header>
-  <h1>Calvin’s Window Washing Inc</h1>
-  <p>Northern Corvallis | 406-274-5005 | calvinslupe@gmail.com</p>
-</header>
-
-<section>
-
-  <!-- PRICING -->
-  <div class="card">
-    <h2>Pricing</h2>
-    <p class="price">$4 per window</p>
-    <p>We estimate 1 window = <b>8 sq ft</b></p>
-    <p><b>No minimum charge per visit</b></p>
-    <p><b>25% of all profit goes to charity</b></p>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div>📍 Your Service Area</div>
+      <div>📞 (555) 555-5555 • ✉️ hello@yourdomain.com • Hours: Mon–Fri</div>
+    </div>
   </div>
 
-  <!-- QUOTE CALCULATOR -->
-  <div class="card">
-    <h2>Instant Quote Calculator</h2>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-text">
+          <strong>YOUR BUSINESS NAME</strong>
+          <span>Professional, friendly, and easy to book</span>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#quote">Quote</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <label>Number of Windows</label>
-    <input type="number" id="windows" placeholder="e.g. 10"/>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-panel">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <div class="hero-copy">
+              <div class="hero-tag"><span class="dot"></span> Fast quotes • Live scheduling • Clean, modern design</div>
+              <h1>Bright, professional service website built for GitHub Pages.</h1>
+              <p>
+                Show your work with a strong hero image, let customers get a quote instantly, and allow them to book only the
+                times that are actually available on your calendar.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#quote">Get an instant quote</a>
+                <a class="btn btn-secondary" href="#schedule">Book an appointment</a>
+              </div>
+              <div class="hero-meta">
+                <span class="hero-chip">Green + blue color theme</span>
+                <span class="hero-chip">Mobile-friendly</span>
+                <span class="hero-chip">Easy to edit</span>
+              </div>
+            </div>
 
-    <label>OR Square Feet</label>
-    <input type="number" id="sqft" placeholder="e.g. 80"/>
+            <aside class="hero-side">
+              <h3>How it works</h3>
+              <p>Upload your own banner image, then edit the text and variables in one place. The site stays simple and professional.</p>
+              <div class="mini-grid">
+                <div class="mini-card">
+                  <strong>1. Quote</strong>
+                  <span>Customers enter windows or square footage and see an automatic estimate.</span>
+                </div>
+                <div class="mini-card">
+                  <strong>2. Schedule</strong>
+                  <span>Customers book from a calendar that is synced to your availability.</span>
+                </div>
+                <div class="mini-card">
+                  <strong>3. Contact</strong>
+                  <span>General messages go straight to your inbox with a form backend.</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <button onclick="calculateQuote()">Calculate Quote</button>
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>About Us</h2>
+            <p>Use this section to explain what your business does, who you help, and why customers can trust you.</p>
+          </div>
+        </div>
 
-    <h3 id="result"></h3>
-  </div>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Who we are</h3>
+            <p>
+              We are a customer-focused team that values clear communication, dependable service, and quality work.
+              Every step is designed to be easy, from first contact to final appointment.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Reliable service</span>
+              <span class="pill">Friendly support</span>
+              <span class="pill">Fast responses</span>
+            </div>
+          </article>
 
-  <!-- BOOKING -->
-  <div class="card">
-    <h2>Schedule an Appointment</h2>
-    <p>
-      View availability below. To book, use the scheduling link connected to our calendar.
-      (This ensures vacations and blocked dates cannot be booked.)
-    </p>
+          <article class="card">
+            <h3>What we offer</h3>
+            <p>
+              Add a short overview of your main services here. Keep it simple, direct, and easy to scan.
+            </p>
+            <ul>
+              <li>Instant automated quotes</li>
+              <li>Live appointment booking</li>
+              <li>Quick contact form for questions</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <!-- OPTION 1: PUBLIC GOOGLE CALENDAR EMBED -->
-    <iframe
-      src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID_HERE&ctz=America%2FLos_Angeles"
-      height="500">
-    </iframe>
+    <section id="quote">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Instant Quote Calculator</h2>
+            <p>
+              Customers can calculate a price either by number of windows or by square footage.
+              The square-foot estimate uses your per-window price divided by 8 square feet.
+            </p>
+          </div>
+        </div>
 
-    <br><br>
+        <div class="grid-2">
+          <article class="card calculator-card">
+            <h3>Estimate your price</h3>
+            <p class="help">Edit the pricing variables in the <strong>SITE_CONFIG</strong> script near the bottom of the page.</p>
 
-    <!-- OPTION 2: APPOINTMENT SCHEDULING LINK -->
-    <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/YOUR_SCHEDULE_LINK_HERE" target="_blank">
-      <button>Book Appointment in Google Calendar</button>
-    </a>
+            <div class="toggle-row" role="tablist" aria-label="Quote method">
+              <button id="modeWindows" class="active" type="button">By windows</button>
+              <button id="modeSqft" type="button">By square feet</button>
+            </div>
 
-    <p style="font-size:0.9rem;color:#666;">
-      Tip: Use Google Calendar “Appointment Schedule” so customers can only pick open times.
-    </p>
-  </div>
+            <form class="calculator" onsubmit="return false;">
+              <label id="windowsLabel">
+                Number of windows
+                <input id="windowsInput" type="number" min="0" step="1" value="1" />
+              </label>
 
-  <!-- CONTACT -->
-  <div class="card">
-    <h2>Contact</h2>
-    <p>Phone: 406-274-5005</p>
-    <p>Email: calvinslupe@gmail.com</p>
-    <p>Service Area: Northern Corvallis</p>
-  </div>
+              <label id="sqftLabel" style="display:none;">
+                Square feet of window glass
+                <input id="sqftInput" type="number" min="0" step="0.1" value="8" />
+              </label>
 
-</section>
+              <div class="result-box" aria-live="polite">
+                <div class="small">Estimated total</div>
+                <div class="price" id="quotePrice">$0.00</div>
+                <p class="breakdown" id="quoteBreakdown">1 window × $0.00 per window</p>
+              </div>
 
-<footer>
-  © Calvin’s Window Washing Inc
-</footer>
+              <p class="notice">
+                This is an instant estimate. You can still review details manually before confirming the final job.
+              </p>
+            </form>
+          </article>
 
-<script>
-function calculateQuote() {
-  const pricePerWindow = 4;
-  const windowSizeSqFt = 8;
+          <article class="card">
+            <h3>How the calculator works</h3>
+            <p>
+              The window quote uses your <strong>price per window</strong>. The square-foot quote uses the same price divided by
+              <strong>8 square feet per window</strong>.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Edit price per window</span>
+              <span class="pill">Edit square feet per window</span>
+              <span class="pill">Automatic math</span>
+            </div>
+            <p class="notice">
+              Example: if your price per window is $12, then your square-foot price is $1.50 because $12 ÷ 8 = $1.50.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  let windows = parseFloat(document.getElementById("windows").value);
-  let sqft = parseFloat(document.getElementById("sqft").value);
+    <section id="schedule">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Schedule an Appointment</h2>
+            <p>
+              Embed a booking tool here that syncs to your calendar so customers only see times you actually have open.
+            </p>
+          </div>
+        </div>
 
-  let totalWindows = 0;
+        <div class="card">
+          <h3>Live calendar booking</h3>
+          <p class="help">
+            Best setup: use a calendar booking service that connects to your calendar and shows only available slots.
+            Paste the booking embed URL into the script below.
+          </p>
+          <div class="embed-wrap">
+            <div class="embed-fallback" id="calendarFallback">
+              <div>
+                <h3 style="margin-top:0;">Booking calendar placeholder</h3>
+                <p>
+                  Add your booking widget here. When connected, customers can schedule only from your available times.
+                </p>
+              </div>
+            </div>
+            <iframe
+              id="calendarFrame"
+              title="Appointment booking calendar"
+              src="about:blank"
+              loading="lazy"
+              style="display:none;"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  if (!isNaN(windows) && windows > 0) {
-    totalWindows = windows;
-  } else if (!isNaN(sqft) && sqft > 0) {
-    totalWindows = sqft / windowSizeSqFt;
-  } else {
-    document.getElementById("result").innerText = "Enter windows or square feet.";
-    return;
-  }
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Contact Us</h2>
+            <p>Use this form for general questions, follow-ups, and anything not covered by the quote form.</p>
+          </div>
+        </div>
 
-  const total = totalWindows * pricePerWindow;
+        <div class="grid-2">
+          <article class="card">
+            <h3>Contact form</h3>
+            <form id="contactForm" action="https://formspree.io/f/YOUR_CONTACT_FORM_ID" method="POST">
+              <div class="form-row">
+                <label>
+                  Name
+                  <input name="name" type="text" placeholder="Your name" required />
+                </label>
+                <label>
+                  Email
+                  <input name="email" type="email" placeholder="your@email.com" required />
+                </label>
+              </div>
 
-  document.getElementById("result").innerText =
-    "Estimated Price: $" + total.toFixed(2);
-}
-</script>
+              <label>
+                Message
+                <textarea name="message" placeholder="How can we help?" required></textarea>
+              </label>
 
+              <button class="btn btn-primary" type="submit">Send Message</button>
+            </form>
+            <p class="notice">Replace <strong>YOUR_CONTACT_FORM_ID</strong> with your real Formspree ID.</p>
+          </article>
+
+          <article class="card">
+            <h3>Business details</h3>
+            <p>Add your phone number, email, service area, and business hours here.</p>
+            <ul>
+              <li><strong>Email:</strong> hello@yourdomain.com</li>
+              <li><strong>Phone:</strong> (555) 555-5555</li>
+              <li><strong>Hours:</strong> Mon–Fri, 9:00 AM–5:00 PM</li>
+              <li><strong>Service Area:</strong> Your city or region</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> YOUR BUSINESS NAME</div>
+      <div>Built for GitHub Pages • Ready for a custom domain later</div>
+    </div>
+  </footer>
+
+  <script>
+    const SITE_CONFIG = {
+      businessName: "YOUR BUSINESS NAME",
+      heroImage: "assets/hero.jpg",
+      bookingEmbedUrl: "PASTE_YOUR_BOOKING_EMBED_URL_HERE",
+      quoteFormAction: "https://formspree.io/f/YOUR_QUOTE_FORM_ID",
+      contactFormAction: "https://formspree.io/f/YOUR_CONTACT_FORM_ID",
+      pricePerWindow: 12.00,
+      squareFeetPerWindow: 8
+    };
+
+    // Apply editable values.
+    document.title = SITE_CONFIG.businessName;
+    document.documentElement.style.setProperty('--hero-image', `url('${SITE_CONFIG.heroImage}')`);
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const quoteForm = document.getElementById('quoteForm');
+    const contactForm = document.getElementById('contactForm');
+    if (quoteForm) quoteForm.action = SITE_CONFIG.quoteFormAction;
+    if (contactForm) contactForm.action = SITE_CONFIG.contactFormAction;
+
+    // Booking embed.
+    const calendarFrame = document.getElementById('calendarFrame');
+    const calendarFallback = document.getElementById('calendarFallback');
+    if (SITE_CONFIG.bookingEmbedUrl && SITE_CONFIG.bookingEmbedUrl !== 'PASTE_YOUR_BOOKING_EMBED_URL_HERE') {
+      calendarFrame.src = SITE_CONFIG.bookingEmbedUrl;
+      calendarFrame.style.display = 'block';
+      calendarFallback.style.display = 'none';
+    }
+
+    // Quote calculator.
+    const modeWindows = document.getElementById('modeWindows');
+    const modeSqft = document.getElementById('modeSqft');
+    const windowsLabel = document.getElementById('windowsLabel');
+    const sqftLabel = document.getElementById('sqftLabel');
+    const windowsInput = document.getElementById('windowsInput');
+    const sqftInput = document.getElementById('sqftInput');
+    const quotePrice = document.getElementById('quotePrice');
+    const quoteBreakdown = document.getElementById('quoteBreakdown');
+
+    let mode = 'windows';
+
+    function money(value) {
+      return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+    }
+
+    function calculateQuote() {
+      const pricePerWindow = Number(SITE_CONFIG.pricePerWindow) || 0;
+      const sqFtPerWindow = Number(SITE_CONFIG.squareFeetPerWindow) || 8;
+      const pricePerSqFt = pricePerWindow / sqFtPerWindow;
+
+      if (mode === 'windows') {
+        const windows = Math.max(0, Number(windowsInput.value) || 0);
+        const total = windows * pricePerWindow;
+        quotePrice.textContent = money(total);
+        quoteBreakdown.textContent = `${windows} window${windows === 1 ? '' : 's'} × ${money(pricePerWindow)} per window`;
+      } else {
+        const sqft = Math.max(0, Number(sqftInput.value) || 0);
+        const total = sqft * pricePerSqFt;
+        quotePrice.textContent = money(total);
+        quoteBreakdown.textContent = `${sqft.toFixed(sqft % 1 === 0 ? 0 : 1)} sq ft × ${money(pricePerSqFt)} per sq ft`;
+      }
+    }
+
+    function setMode(newMode) {
+      mode = newMode;
+      modeWindows.classList.toggle('active', newMode === 'windows');
+      modeSqft.classList.toggle('active', newMode === 'sqft');
+      windowsLabel.style.display = newMode === 'windows' ? 'grid' : 'none';
+      sqftLabel.style.display = newMode === 'sqft' ? 'grid' : 'none';
+      calculateQuote();
+    }
+
+    modeWindows.addEventListener('click', () => setMode('windows'));
+    modeSqft.addEventListener('click', () => setMode('sqft'));
+    windowsInput.addEventListener('input', calculateQuote);
+    sqftInput.addEventListener('input', calculateQuote);
+
+    setMode('windows');
+    calculateQuote();
+  </script>
 </body>
 </html>
