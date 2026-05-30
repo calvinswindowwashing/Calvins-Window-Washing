@@ -1,386 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Business Name</title>
-  <meta name="description" content="Professional services website with about, quotes, contact, and appointment booking." />
-  <style>
-    :root{
-      --bg:#0b1220; --bg2:#08101c; --card:rgba(255,255,255,.06); --border:rgba(255,255,255,.1);
-      --text:#f3f6ff; --muted:rgba(243,246,255,.72); --accent:#6ea8fe; --accent2:#8b5cf6;
-      --shadow:0 20px 60px rgba(0,0,0,.35); --radius:24px; --max:1160px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1000px 600px at 15% 10%, rgba(110,168,254,.18), transparent 60%),
-        radial-gradient(900px 500px at 85% 20%, rgba(139,92,246,.18), transparent 55%),
-        linear-gradient(180deg, var(--bg), var(--bg2) 65%, #050914);
-      min-height:100vh;
-    }
-    a{color:inherit;text-decoration:none}
-    .container{width:min(100% - 32px, var(--max)); margin:0 auto}
-    .nav{
-      position:sticky; top:0; z-index:50; backdrop-filter:blur(14px);
-      background:rgba(7,12,22,.72); border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0}
-    .brand{display:flex; align-items:center; gap:12px; font-weight:800}
-    .brand-mark{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:var(--shadow)}
-    .small,.muted,.card p,.card li{color:var(--muted);line-height:1.65}
-    .nav-links{display:flex; gap:22px; flex-wrap:wrap; font-size:.96rem; color:var(--muted)}
-    .nav-links a:hover{color:var(--text)}
-    .hero{padding:84px 0 42px}
-    .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center}
-    .eyebrow{
-      display:inline-flex; align-items:center; gap:10px; padding:10px 14px;
-      border:1px solid rgba(255,255,255,.12); border-radius:999px;
-      background:rgba(255,255,255,.04); color:var(--muted); margin-bottom:18px;
-    }
-    .dot{width:10px;height:10px;border-radius:999px;background:#22c55e;box-shadow:0 0 0 6px rgba(34,197,94,.14)}
-    h1{margin:0 0 18px;font-size:clamp(2.6rem,6vw,5rem);line-height:.95;letter-spacing:-.05em}
-    .lead{color:var(--muted);font-size:1.08rem;line-height:1.7;max-width:58ch;margin-bottom:28px}
-    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:14px 18px; border-radius:16px; font-weight:700;
-      border:1px solid transparent; transition:transform .2s ease, border-color .2s ease, background .2s ease;
-      cursor:pointer;
-    }
-    .btn:hover{transform:translateY(-1px)}
-    .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:var(--shadow)}
-    .btn-secondary{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12);color:var(--text)}
-    .hero-card,.card{
-      background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)
-    }
-    .hero-card{padding:22px}
-    .hero-stat{display:grid; gap:8px; padding:18px 0; border-bottom:1px solid rgba(255,255,255,.08)}
-    .hero-stat:last-child{border-bottom:0}
-    .hero-stat strong{font-size:1.2rem}
-    section{padding:30px 0}
-    .section-title{display:flex; justify-content:space-between; align-items:end; gap:12px; margin-bottom:18px}
-    .section-title h2{margin:0;font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:-.03em}
-    .section-title p{margin:0; color:var(--muted); max-width:58ch; line-height:1.6}
-    .grid-2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px}
-    .card{padding:22px}
-    .card h3{margin-top:0;margin-bottom:10px}
-    .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
-    .pill{
-      padding:10px 12px; border-radius:999px; background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.1); color:var(--text); font-size:.94rem;
-    }
-    form{display:grid;gap:14px}
-    label{display:grid;gap:8px;font-weight:600;color:var(--text)}
-    input,textarea,select{
-      width:100%; border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:14px 15px;
-      background:rgba(255,255,255,.04); color:var(--text); font:inherit; outline:none;
-    }
-    input::placeholder,textarea::placeholder{color:rgba(243,246,255,.45)}
-    input:focus,textarea:focus,select:focus{border-color:rgba(110,168,254,.75);box-shadow:0 0 0 4px rgba(110,168,254,.12)}
-    textarea{min-height:140px;resize:vertical}
-    .form-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .note{margin-top:8px;font-size:.94rem;color:var(--muted)}
-    .embed-wrap{
-      overflow:hidden; border-radius:18px; border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.03); min-height:640px;
-    }
-    .embed-fallback{
-      padding:18px; color:var(--muted); display:grid; place-items:center; text-align:center; min-height:640px;
-    }
-    iframe{width:100%;height:640px;border:0;display:block;background:#fff}
-    .footer{padding:34px 0 50px;color:var(--muted);font-size:.95rem}
-    .footer-inner{
-      display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
-      border-top:1px solid rgba(255,255,255,.08); padding-top:22px;
-    }
-    @media (max-width:960px){
-      .hero-grid,.grid-2{grid-template-columns:1fr}
-      .section-title{align-items:start;flex-direction:column}
-      .form-row{grid-template-columns:1fr}
-      iframe,.embed-fallback,.embed-wrap{min-height:560px}
-    }
-    @media (max-width:640px){
-      .nav-inner{flex-direction:column;align-items:start}
-      .nav-links{gap:14px}
-      .hero{padding-top:48px}
-      h1{line-height:1.02}
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Calvin’s Window Washing Inc</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5fbff;
+    color: #1a1a1a;
+  }
+
+  header {
+    background: linear-gradient(135deg, #4fc3f7, #81d4fa);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+  }
+
+  section {
+    max-width: 900px;
+    margin: auto;
+    padding: 25px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  }
+
+  .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  input, select, button {
+    padding: 10px;
+    margin: 8px 0;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+
+  button {
+    background: #4fc3f7;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #039be5;
+  }
+
+  iframe {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #555;
+  }
+</style>
 </head>
+
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <div class="brand" aria-label="Business name">
-        <div class="brand-mark" aria-hidden="true"></div>
-        <div>
-          <div>Your Business Name</div>
-          <div class="small">Clean, professional service website</div>
-        </div>
-      </div>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#quote">Request a Quote</a>
-        <a href="#contact">Contact</a>
-        <a href="#schedule">Schedule</a>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow"><span class="dot"></span> Fast quotes. Easy scheduling. Professional results.</div>
-          <h1>Modern service website built for GitHub Pages.</h1>
-          <p class="lead">
-            Use this template as your starting point. It is static, mobile-friendly, and easy to move later to a custom domain.
-            Quote and contact forms are ready for a form backend, and the scheduling section is ready for your booking calendar.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#quote">Request a quote</a>
-            <a class="btn btn-secondary" href="#schedule">Book an appointment</a>
-          </div>
-          <p class="note">Replace the placeholders with your business name, logo, colors, and real form links.</p>
-        </div>
+<header>
+  <h1>Calvin’s Window Washing Inc</h1>
+  <p>Northern Corvallis | 406-274-5005 | calvinslupe@gmail.com</p>
+</header>
 
-        <aside class="hero-card" aria-label="Highlights">
-          <div class="hero-stat">
-            <strong>Professional layout</strong>
-            <span>Clear sections, strong calls to action, and a clean visual hierarchy.</span>
-          </div>
-          <div class="hero-stat">
-            <strong>Simple for customers</strong>
-            <span>Customers can learn about you, ask for a quote, contact you, and schedule a visit from one page.</span>
-          </div>
-          <div class="hero-stat">
-            <strong>Easy to maintain</strong>
-            <span>Update text in one file, commit to GitHub, and the site refreshes automatically on GitHub Pages.</span>
-          </div>
-        </aside>
-      </div>
-    </section>
+<section>
 
-    <section id="about">
-      <div class="container">
-        <div class="section-title">
-          <div>
-            <h2>About Us</h2>
-            <p>Use this section to explain what you do, who you help, and why customers should trust your work.</p>
-          </div>
-        </div>
+  <!-- PRICING -->
+  <div class="card">
+    <h2>Pricing</h2>
+    <p class="price">$4 per window</p>
+    <p>We estimate 1 window = <b>8 sq ft</b></p>
+    <p><b>No minimum charge per visit</b></p>
+    <p><b>25% of all profit goes to charity</b></p>
+  </div>
 
-        <div class="grid-2">
-          <article class="card">
-            <h3>Who we are</h3>
-            <p>
-              We are a customer-focused team that delivers dependable service, clear communication, and high-quality results.
-              Our goal is to make every step simple, from first contact to final appointment.
-            </p>
-            <div class="pill-row">
-              <span class="pill">Reliable service</span>
-              <span class="pill">Friendly communication</span>
-              <span class="pill">Fast turnaround</span>
-            </div>
-          </article>
+  <!-- QUOTE CALCULATOR -->
+  <div class="card">
+    <h2>Instant Quote Calculator</h2>
 
-          <article class="card">
-            <h3>What we do</h3>
-            <p>
-              Add a short overview of your main services here. Keep it focused and easy to scan so visitors quickly understand
-              what you offer and how to get started.
-            </p>
-            <ul>
-              <li>Custom quotes for each project</li>
-              <li>Simple online contact options</li>
-              <li>Appointment scheduling that syncs to your calendar</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
+    <label>Number of Windows</label>
+    <input type="number" id="windows" placeholder="e.g. 10"/>
 
-    <section id="quote">
-      <div class="container">
-        <div class="section-title">
-          <div>
-            <h2>Request a Quote</h2>
-            <p>Use a form backend so submissions reach your email without needing your own server.</p>
-          </div>
-        </div>
+    <label>OR Square Feet</label>
+    <input type="number" id="sqft" placeholder="e.g. 80"/>
 
-        <div class="grid-2">
-          <article class="card">
-            <h3>Quote form</h3>
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-              <div class="form-row">
-                <label>
-                  Full Name
-                  <input name="name" type="text" placeholder="Jane Smith" required />
-                </label>
-                <label>
-                  Email
-                  <input name="email" type="email" placeholder="jane@example.com" required />
-                </label>
-              </div>
+    <button onclick="calculateQuote()">Calculate Quote</button>
 
-              <div class="form-row">
-                <label>
-                  Phone
-                  <input name="phone" type="tel" placeholder="(555) 555-5555" />
-                </label>
-                <label>
-                  Project Type
-                  <select name="project_type" required>
-                    <option value="" selected disabled>Select one</option>
-                    <option>General Service</option>
-                    <option>Quote for a New Project</option>
-                    <option>Follow-up / Repair</option>
-                    <option>Other</option>
-                  </select>
-                </label>
-              </div>
+    <h3 id="result"></h3>
+  </div>
 
-              <label>
-                Project Details
-                <textarea name="message" placeholder="Tell us what you need, the timeline, and any important details." required></textarea>
-              </label>
+  <!-- BOOKING -->
+  <div class="card">
+    <h2>Schedule an Appointment</h2>
+    <p>
+      View availability below. To book, use the scheduling link connected to our calendar.
+      (This ensures vacations and blocked dates cannot be booked.)
+    </p>
 
-              <button class="btn btn-primary" type="submit">Send Quote Request</button>
-            </form>
-            <p class="note">Replace <strong>YOUR_FORM_ID</strong> with your actual Formspree form ID.</p>
-          </article>
+    <!-- OPTION 1: PUBLIC GOOGLE CALENDAR EMBED -->
+    <iframe
+      src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID_HERE&ctz=America%2FLos_Angeles"
+      height="500">
+    </iframe>
 
-          <article class="card">
-            <h3>What to include</h3>
-            <p>
-              Make the form easy to fill out. Ask for the minimum details needed to give an accurate quote.
-            </p>
-            <div class="pill-row">
-              <span class="pill">Project type</span>
-              <span class="pill">Location</span>
-              <span class="pill">Budget range</span>
-              <span class="pill">Deadline</span>
-              <span class="pill">Photos</span>
-            </div>
-            <p class="note">
-              Keep the form short. Short forms usually get more responses because they feel faster and easier.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
+    <br><br>
 
-    <section id="contact">
-      <div class="container">
-        <div class="section-title">
-          <div>
-            <h2>Contact Me</h2>
-            <p>Use a separate contact form for general questions, follow-ups, and quick messages.</p>
-          </div>
-        </div>
+    <!-- OPTION 2: APPOINTMENT SCHEDULING LINK -->
+    <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/YOUR_SCHEDULE_LINK_HERE" target="_blank">
+      <button>Book Appointment in Google Calendar</button>
+    </a>
 
-        <div class="grid-2">
-          <article class="card">
-            <h3>Contact form</h3>
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-              <div class="form-row">
-                <label>
-                  Name
-                  <input name="name" type="text" placeholder="Your name" required />
-                </label>
-                <label>
-                  Email
-                  <input name="email" type="email" placeholder="your@email.com" required />
-                </label>
-              </div>
+    <p style="font-size:0.9rem;color:#666;">
+      Tip: Use Google Calendar “Appointment Schedule” so customers can only pick open times.
+    </p>
+  </div>
 
-              <label>
-                Message
-                <textarea name="message" placeholder="How can we help?" required></textarea>
-              </label>
+  <!-- CONTACT -->
+  <div class="card">
+    <h2>Contact</h2>
+    <p>Phone: 406-274-5005</p>
+    <p>Email: calvinslupe@gmail.com</p>
+    <p>Service Area: Northern Corvallis</p>
+  </div>
 
-              <button class="btn btn-primary" type="submit">Send Message</button>
-            </form>
-            <p class="note">You can reuse the same Formspree form ID here, or create a separate one for contact messages.</p>
-          </article>
+</section>
 
-          <article class="card">
-            <h3>Business info</h3>
-            <p>Add your business details here so customers can reach you quickly.</p>
-            <ul>
-              <li><strong>Email:</strong> hello@yourdomain.com</li>
-              <li><strong>Phone:</strong> (555) 555-5555</li>
-              <li><strong>Hours:</strong> Mon–Fri, 9:00 AM–5:00 PM</li>
-              <li><strong>Service Area:</strong> Your city or region</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
+<footer>
+  © Calvin’s Window Washing Inc
+</footer>
 
-    <section id="schedule">
-      <div class="container">
-        <div class="section-title">
-          <div>
-            <h2>Schedule an Appointment</h2>
-            <p>Embed your booking page here so customers can pick a time, and the booking updates your calendar automatically.</p>
-          </div>
-        </div>
+<script>
+function calculateQuote() {
+  const pricePerWindow = 4;
+  const windowSizeSqFt = 8;
 
-        <div class="card">
-          <h3>Live booking calendar</h3>
-          <p class="small">
-            Paste your Google Calendar appointment schedule embed code here, or replace the iframe source with your booking tool's embed URL.
-          </p>
-          <div class="embed-wrap">
-            <div class="embed-fallback" id="calendarFallback">
-              <div>
-                <h3 style="margin-top:0;">Calendar embed placeholder</h3>
-                <p>Add your booking widget here so customers can schedule time without emailing back and forth.</p>
-                <p class="note">
-                  In Google Calendar, appointment schedules can be shared as a link or embedded on your site.
-                </p>
-              </div>
-            </div>
-            <iframe
-              id="calendarFrame"
-              title="Appointment booking calendar"
-              src="about:blank"
-              loading="lazy"
-              style="display:none;"
-            ></iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+  let windows = parseFloat(document.getElementById("windows").value);
+  let sqft = parseFloat(document.getElementById("sqft").value);
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> Your Business Name</div>
-      <div>Built for GitHub Pages • Ready for a custom domain later</div>
-    </div>
-  </footer>
+  let totalWindows = 0;
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  if (!isNaN(windows) && windows > 0) {
+    totalWindows = windows;
+  } else if (!isNaN(sqft) && sqft > 0) {
+    totalWindows = sqft / windowSizeSqFt;
+  } else {
+    document.getElementById("result").innerText = "Enter windows or square feet.";
+    return;
+  }
 
-    // Replace this with your real booking embed URL after creating the schedule.
-    const BOOKING_URL = "PASTE_YOUR_BOOKING_EMBED_URL_HERE";
+  const total = totalWindows * pricePerWindow;
 
-    const frame = document.getElementById('calendarFrame');
-    const fallback = document.getElementById('calendarFallback');
+  document.getElementById("result").innerText =
+    "Estimated Price: $" + total.toFixed(2);
+}
+</script>
 
-    if (BOOKING_URL && BOOKING_URL !== "PASTE_YOUR_BOOKING_EMBED_URL_HERE") {
-      frame.src = BOOKING_URL;
-      frame.style.display = "block";
-      fallback.style.display = "none";
-    }
-  </script>
 </body>
 </html>
