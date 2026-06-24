@@ -229,26 +229,6 @@ ul {
   margin-top: 20px;
 }
 
-/* Styling the Image */
-.about-image {
-  width: 40%; /* Controls how much space the image takes up */
-  max-width: 400px;
-  border-radius: 8px; /* Adds soft, professional rounded corners */
-  object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow */
-
-/* Mobile Responsiveness: Stacks the image on top of the text for small screens */
-@media (max-width: 768px) {
-  .about-content {
-    flex-direction: column;
-  }
-  
-  .about-image, .about-text {
-    width: 100%;
-  }
-}
-}
-
 .charity-card {
     background-color: var(--card-bg);
     padding: 40px;
