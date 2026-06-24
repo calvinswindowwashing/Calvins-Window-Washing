@@ -221,6 +221,32 @@ ul {
     margin-bottom: 20px;
     font-size: 1.1rem;
     color: var(--text-light);
+/* Layout for the About Section */
+.about-content {
+  display: flex;
+  align-items: center; /* Aligns the text and image vertically */
+  gap: 30px; /* Creates a nice spacing between the image and text */
+  margin-top: 20px;
+}
+
+/* Styling the Image */
+.about-image {
+  width: 40%; /* Controls how much space the image takes up */
+  max-width: 400px;
+  border-radius: 8px; /* Adds soft, professional rounded corners */
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow */
+
+/* Mobile Responsiveness: Stacks the image on top of the text for small screens */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+  }
+  
+  .about-image, .about-text {
+    width: 100%;
+  }
+}
 }
 
 .charity-card {
