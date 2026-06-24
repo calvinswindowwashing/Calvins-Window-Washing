@@ -52,8 +52,15 @@
             <div class="about-text">
                 <h2>About Me</h2>
                 <div class="divider"></div>
+                
+                <!-- NEW IMAGE ADDED HERE -->
+                <img src="Calvin_window.jpg" alt="Calvin Window Washing" style="float: left; width: 100%; max-width: 250px; margin: 0 20px 15px 0; border-radius: 8px;">
+                
                 <p>Hi, I'm Calvin! I'm a local teen here in Corvallis saving up for my future goals and projects. I started <strong>Calvin's Window Washing</strong> to provide hard work and immediate value to my community.</p>
                 <p>I believe in doing a thorough, professional job every single time. When you hire me, you're not just getting spotless windows—you're supporting a young local entrepreneur.</p>
+                
+                <!-- Clearfix prevents layout bugs with floated images -->
+                <div style="clear: both;"></div>
             </div>
             <div class="charity-card">
                 <div class="charity-icon">❤️</div>
@@ -94,7 +101,7 @@
             <div class="calendar-container">
                 <!-- Google Calendar Appointment Scheduling iframe goes here -->
                 <!-- Replace the URL below with your actual Google Calendar Appointment Schedule link -->
-                <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ29ZMioarYn_HFdqACqQ3yimVVPBWPDWoNb3axoYuOSWrekSWwJfSV0T4Xr2PtjtRu4NgXHX2WG?gv=true" 
+                <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0placeholder_link_replace_me?gv=true" 
                         style="border: 0" width="100%" height="600" frameborder="0"></iframe>
                 
                 <p class="calendar-note"><em>Note: If the calendar doesn't load, please <a href="#contact">contact me directly</a> to book.</em></p>
@@ -128,12 +135,12 @@
             <div class="contact-form-container">
                 <!-- Formspree integration for static sites -->
                 <!-- Replace 'YOUR_FORMSPREE_ID' with your actual Formspree endpoint -->
-                <action="https://formspree.io/f/xykqgrzg" method="POST" class="contact-form">
+                <form action="https://formspree.io/f/xykqgrzg" method="POST" class="contact-form">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required placeholder="Your Name">
                     
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required placeholder=calvinswindowwashingor@gmail.com>
+                    <input type="email" id="email" name="email" required placeholder="calvinswindowwashingor@gmail.com">
                     
                     <label for="message">Message</label>
                     <textarea id="message" name="message" rows="4" required placeholder="How many windows do you have? Any special requests?"></textarea>
