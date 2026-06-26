@@ -4,29 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calvin's Window Washing</title>
-    <meta name="description" content="Professional window washing in Corvallis, OR by a local teen. 20% of profits go to charity.">
+    <meta name="description" content="Thorough, reliable window washing in Corvallis, OR by a 15-year-old local. 20% of profits go to charity.">
     <link rel="stylesheet" href="styles.css">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo-link">
                 <img src="Window%20Washing%20Logo%20Final.png" alt="Calvin's Window Washing Logo" class="logo">
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#about">About</a></li>
-                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#pricing">Pricing & Quote</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#booking" class="btn-primary nav-btn">Book Now</a></li>
             </ul>
-            <!-- Mobile Menu Toggle -->
-            <div class="hamburger">
+            <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -34,34 +31,32 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <header class="hero">
         <div class="hero-content">
             <h1>Crystal Clear Views for Your Home</h1>
-            <p>Professional, reliable window washing by a local teen in Corvallis. Get streak-free windows while supporting a great cause.</p>
+            <p>Thorough, reliable window washing by a 15-year-old local in Corvallis. Get spotless windows while supporting a great cause.</p>
             <div class="hero-buttons">
                 <a href="#booking" class="btn-primary">Schedule a Wash</a>
-                <a href="#pricing" class="btn-secondary">View Pricing</a>
+                <a href="#pricing" class="btn-secondary">Get an Instant Quote</a>
             </div>
         </div>
     </header>
 
-    <!-- About Section -->
     <section id="about" class="section">
         <div class="container about-grid">
             <div class="about-text">
                 <h2>About Me</h2>
                 <div class="divider"></div>
                 
-                <!-- NEW IMAGE ADDED HERE -->
-                <img src="Calvin_window.jpg" alt="Calvin Window Washing" style="float: left; width: 100%; max-width: 250px; margin: 0 20px 15px 0; border-radius: 8px;">
-                
-                <p>Hi, I'm Calvin! I'm a local teen here in Corvallis saving up for my future goals and projects. I started <strong>Calvin's Window Washing</strong> to provide hard work and immediate value to my community.</p>
-                <p>I believe in doing a thorough, professional job every single time. When you hire me, you're not just getting spotless windows—you're supporting a young local entrepreneur.</p>
-                
-                <!-- Clearfix prevents layout bugs with floated images -->
-                <div style="clear: both;"></div>
+                <div class="about-content">
+                    <img src="Calvin_window.jpg" alt="Calvin Window Washing" class="about-img">
+                    <div>
+                        <p>Hi, I'm Calvin! I am 15 years old and a local here in Corvallis, saving up for my future goals and projects. I started <strong>Calvin's Window Washing</strong> to provide hard work and immediate value to my community.</p>
+                        <p>I believe in doing a meticulous, thorough job every single time. When you hire me, you're not just getting completely clear windows—you're supporting a young entrepreneur.</p>
+                    </div>
+                </div>
             </div>
+            
             <div class="charity-card">
                 <div class="charity-icon">❤️</div>
                 <h3>Washing for a Cause</h3>
@@ -70,29 +65,40 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
     <section id="pricing" class="section bg-light">
         <div class="container center-text">
-            <h2>Simple, Transparent Pricing</h2>
+            <h2>Pricing & Instant Quote</h2>
             <div class="divider center-divider"></div>
-            <p class="section-subtitle">No hidden fees, no complicated quotes. Just straightforward pricing based on your home's needs.</p>
+            <p class="section-subtitle">Straightforward pricing with no hidden fees. Use the calculator below to get an instant estimate based on your home's needs.</p>
             
-            <div class="pricing-card">
-                <h3 class="price-range">   $75 - $100   </h3>
-                <p class="price-desc">Total cost for most residential homes.</p>
-                <ul class="pricing-features">
-                    <li>✔️ Exterior window cleaning</li>
-                    <li>✔️ Screen wipedown</li>
-                    <li>✔️ Streak-free guarantee</li>
-                    <li>✔️ Price scales fairly based on the number of windows
-                    </li>✔️ windows up to 12 feet high
-                </ul>
-                <a href="#booking" class="btn-primary">Book Your Spot</a>
+            <div class="calculator-card">
+                <div class="price-header">
+                    <span class="base-rate">$5</span>
+                    <span class="rate-label">per window</span>
+                </div>
+                
+                <div class="calc-form">
+                    <div class="input-group">
+                        <label for="windowCount">How many windows do you have?</label>
+                        <input type="number" id="windowCount" min="0" placeholder="e.g., 15">
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="stainRemoval">
+                        <label for="stainRemoval">Add hard water/stain removal (+$2 per window)</label>
+                    </div>
+                </div>
+
+                <div class="calc-result">
+                    <h3>Estimated Total: <span id="totalPrice">$0</span></h3>
+                    <p class="price-note">Price includes exterior cleaning, screen wipedown, and a streak-free guarantee for windows up to 12 feet high.</p>
+                </div>
+                
+                <a href="#booking" class="btn-primary w-100">Book Your Spot</a>
             </div>
         </div>
     </section>
 
-    <!-- Booking Section (Google Calendar integration) -->
     <section id="booking" class="section">
         <div class="container center-text">
             <h2>Schedule Your Appointment</h2>
@@ -100,23 +106,19 @@
             <p class="section-subtitle">Select a day and time that works best for you. This syncs directly to my calendar so we won't get double-booked!</p>
             
             <div class="calendar-container">
-                <!-- Google Calendar Appointment Scheduling iframe goes here -->
-                <!-- Replace the URL below with your actual Google Calendar Appointment Schedule link -->
                 <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ29ZMioarYn_HFdqACqQ3yimVVPBWPDWoNb3axoYuOSWrekSWwJfSV0T4Xr2PtjtRu4NgXHX2WG?gv=true" 
                         style="border: 0" width="100%" height="600" frameborder="0"></iframe>
-                
                 <p class="calendar-note"><em>Note: If the calendar doesn't load, please <a href="#contact">contact me directly</a> to book.</em></p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="section bg-dark text-white">
         <div class="container contact-grid">
             <div class="contact-info">
                 <h2>Get in Touch</h2>
                 <div class="divider"></div>
-                <p>Have questions about pricing, or want an exact quote? Feel free to reach out via phone or email.</p>
+                <p>Have questions about your specific windows, or want to send me some details before booking? Feel free to reach out.</p>
                 <div class="contact-methods">
                     <div class="method">
                         <strong>📞 Phone:</strong> <br>
@@ -134,56 +136,84 @@
             </div>
             
             <div class="contact-form-container">
-                <!-- Formspree integration for static sites -->
-                <!-- Replace 'YOUR_FORMSPREE_ID' with your actual Formspree endpoint -->
-               <form action="https://formspree.io/f/xykqgrzg" method="POST" class="contact-form" style="display: flex; flex-direction: column; gap: 15px;">
-    
-    <div style="display: flex; flex-direction: column; gap: 5px;">
-        <label for="name" style="font-weight: 600;">Name</label>
-        <input type="text" id="name" name="name" required placeholder="Your Name" style="padding: 10px; border-radius: 4px; border: 1px solid #ccc; font-family: inherit;">
-    </div>
-    
-    <div style="display: flex; flex-direction: column; gap: 5px;">
-        <label for="email" style="font-weight: 600;">Email</label>
-        <input type="email" id="email" name="email" required placeholder="calvinswindowwashingor@gmail.com" style="padding: 10px; border-radius: 4px; border: 1px solid #ccc; font-family: inherit;">
-    </div>
-    
-    <div style="display: flex; flex-direction: column; gap: 5px;">
-        <label for="message" style="font-weight: 600;">Message</label>
-        <textarea id="message" name="message" rows="4" required placeholder="How many windows do you have? Any special requests?" style="padding: 10px; border-radius: 4px; border: 1px solid #ccc; font-family: inherit; resize: vertical;"></textarea>
-    </div>
-    
-    <button type="submit" class="btn-primary w-100" style="margin-top: 5px; padding: 12px; font-weight: bold; cursor: pointer;">Send Message</button>
-
+               <form action="https://formspree.io/f/xykqgrzg" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your Name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" required placeholder="Any special requests or details about your home?"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary w-100 btn-submit">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container footer-content">
             <div class="footer-logo">
-                <img src="Window%20Washing%20Logo%20Final.png" alt="Calvin's Window Washing Logo" style="height: 40px;">
+                <img src="Window%20Washing%20Logo%20Final.png" alt="Calvin's Window Washing Logo" style="height: 40px; opacity: 0.7;">
             </div>
             <p>&copy; <span id="year"></span> Calvin's Window Washing. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Simple JavaScript for mobile menu and smooth scrolling -->
     <script>
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                navLinks.classList.remove('active'); // close menu on click
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
         });
+
+        // Instant Quote Calculator Logic
+        const windowInput = document.getElementById('windowCount');
+        const stainCheckbox = document.getElementById('stainRemoval');
+        const displayPrice = document.getElementById('totalPrice');
+
+        function updateQuote() {
+            // Get number of windows, default to 0 if empty
+            const numWindows = parseInt(windowInput.value) || 0;
+            
+            // Base price: $5 per window
+            let total = numWindows * 5;
+            
+            // Add extras: $2 per window for stain removal
+            if (stainCheckbox.checked) {
+                total += (numWindows * 2);
+            }
+            
+            // Update display
+            displayPrice.textContent = '$' + total;
+        }
+
+        // Listen for changes
+        windowInput.addEventListener('input', updateQuote);
+        stainCheckbox.addEventListener('change', updateQuote);
     </script>
 </body>
 </html>
