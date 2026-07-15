@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calvin's Window Washing</title>
-    <meta name="description" content="Thorough, reliable window washing in Corvallis, OR by a 15-year-old local. 20% of profits go to Heartland Humane Society.">
+    <meta name="description" content="Thorough, reliable window washing in Corvallis, OR by a 15-year-old local. 20% of profits go to charity.">
     <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo-link">
@@ -23,6 +25,7 @@
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#booking" class="btn-primary nav-btn">Book Now</a></li>
             </ul>
+            <!-- Mobile Menu Toggle -->
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -31,6 +34,7 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <header class="hero">
         <div class="hero-content">
             <h1>Crystal Clear Views for Your Home</h1>
@@ -42,6 +46,7 @@
         </div>
     </header>
 
+    <!-- About Section -->
     <section id="about" class="section">
         <div class="container about-grid">
             <div class="about-text">
@@ -49,7 +54,7 @@
                 <div class="divider"></div>
                 
                 <div class="about-content">
-                    <img src="Calvin_window.jpeg" alt="Calvin Window Washing" class="about-img">
+                    <img src="Calvin_window.jpg" alt="Calvin Window Washing" class="about-img">
                     <div>
                         <p>Hi, I'm Calvin! I am 15 years old and a local here in Corvallis, saving up for my future goals and projects. I started <strong>Calvin's Window Washing</strong> to provide hard work and immediate value to my community.</p>
                         <p>I believe in doing a meticulous, thorough job every single time. When you hire me, you're not just getting completely clear windows—you're supporting a young entrepreneur.</p>
@@ -110,6 +115,7 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact" class="section bg-dark text-white">
         <div class="container contact-grid">
             <div class="contact-info">
@@ -155,6 +161,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container footer-content">
             <div class="footer-logo">
@@ -164,7 +171,7 @@
         </div>
     </footer>
 
-   <!-- Interactive Scripts -->
+    <!-- Interactive Scripts -->
     <script>
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
@@ -190,13 +197,13 @@
             });
         });
 
-        // Instant Quote Calculator Logic (Fixed & Simplified)
+        // Instant Quote Calculator Logic
         const windowInput = document.getElementById('windowCount');
         const displayPrice = document.getElementById('totalPrice');
 
         function updateQuote() {
-            // Get number of windows, default to 0 if empty
-            const numWindows = parseInt(windowInput.value) || 0;
+            // Get number of windows, default to 0 if empty or negative
+            const numWindows = Math.max(0, parseInt(windowInput.value) || 0);
             
             // Base price calculation: $5 per window
             const total = numWindows * 5;
@@ -205,8 +212,11 @@
             displayPrice.textContent = '$' + total;
         }
 
-        // Listen for typing or clicking arrows in the input box
+        // Listen for typing, scroll wheels, or clicking arrows
         if (windowInput && displayPrice) {
             windowInput.addEventListener('input', updateQuote);
+            windowInput.addEventListener('change', updateQuote);
         }
     </script>
+</body>
+</html>
