@@ -164,6 +164,7 @@
         </div>
     </footer>
 
+   <!-- Interactive Scripts -->
     <script>
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
@@ -172,45 +173,40 @@
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('nav-links');
         
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                navLinks.classList.remove('active'); // close menu on click
+                if (navLinks) navLinks.classList.remove('active'); // close menu on click
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
         });
 
-        // Instant Quote Calculator Logic
+        // Instant Quote Calculator Logic (Fixed & Simplified)
         const windowInput = document.getElementById('windowCount');
-        const stainCheckbox = document.getElementById('stainRemoval');
         const displayPrice = document.getElementById('totalPrice');
 
         function updateQuote() {
             // Get number of windows, default to 0 if empty
             const numWindows = parseInt(windowInput.value) || 0;
             
-            // Base price: $5 per window
-            let total = numWindows * 5;
-            
-            // Add extras: $2 per window for stain removal
-            if (stainCheckbox.checked) {
-                total += (numWindows * 2);
-            }
+            // Base price calculation: $5 per window
+            const total = numWindows * 5;
             
             // Update display
             displayPrice.textContent = '$' + total;
         }
 
-        // Listen for changes
-        windowInput.addEventListener('input', updateQuote);
-        stainCheckbox.addEventListener('change', updateQuote);
+        // Listen for typing or clicking arrows in the input box
+        if (windowInput && displayPrice) {
+            windowInput.addEventListener('input', updateQuote);
+        }
     </script>
-</body>
-</html>
