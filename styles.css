@@ -184,7 +184,6 @@ ul {
 .hero {
     height: 100vh;
     min-height: 600px;
-    /* Softened the overlay for a cleaner look */
     background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.6)), url('hero_image.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -331,28 +330,6 @@ ul {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
-}
-
-.checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background-color: var(--bg-light);
-    padding: 15px;
-    border-radius: 8px;
-}
-
-.checkbox-group input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    accent-color: var(--primary-color);
-}
-
-.checkbox-group label {
-    cursor: pointer;
-    color: var(--text-color);
-    font-weight: 500;
 }
 
 .calc-result {
