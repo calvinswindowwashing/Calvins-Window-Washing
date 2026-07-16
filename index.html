@@ -182,7 +182,7 @@
         </div>
     </footer>
 
-    <!-- Interactive Scripts -->
+   <!-- Interactive Scripts -->
     <script>
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
@@ -208,26 +208,38 @@
             });
         });
 
-        // Instant Quote Calculator Logic
+        // Instant Quote & Charity Impact Calculator Logic
         const windowInput = document.getElementById('windowCount');
         const displayPrice = document.getElementById('totalPrice');
+        const displayCharity = document.getElementById('charityPrice');
+        const displayToys = document.getElementById('toyCount');
 
         function updateQuote() {
             // Get number of windows, default to 0 if empty or negative
             const numWindows = Math.max(0, parseInt(windowInput.value) || 0);
             
-            // Base price calculation: $5 per window
+            // 1. Calculate total ($5 per window)
             const total = numWindows * 5;
             
-            // Update display
+            // 2. Calculate charity donation (20% of total)
+            const charity = total * 0.20;
+            
+            // 3. Calculate dog/cat toys based on your formula: (charity / 5) + 1
+            // If windows are 0, toys should be 0 instead of 1
+            let toys = 0;
+            if (numWindows > 0) {
+                toys = Math.floor((charity / 5) + 1);
+            }
+            
+            // Update the website elements
             displayPrice.textContent = '$' + total;
+            displayCharity.textContent = '$' + charity;
+            displayToys.textContent = `That's ${toys} dog or cat toy${toys === 1 ? '' : 's'}!`;
         }
 
-        // Listen for typing, scroll wheels, or clicking arrows
-        if (windowInput && displayPrice) {
+        // Listen for typing, scrolling, or clicking arrows
+        if (windowInput && displayPrice && displayCharity && displayToys) {
             windowInput.addEventListener('input', updateQuote);
             windowInput.addEventListener('change', updateQuote);
         }
     </script>
-</body>
-</html>
